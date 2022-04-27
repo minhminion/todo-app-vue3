@@ -4,7 +4,12 @@
     <router-link to="/">Todo</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <theme-toggle-button />
+  <theme-toggle-button
+    :style="{ height: '60px', width: '60px', bottom: '30px', right: '30px' }"
+  />
+  <async-loading-button
+    :style="{ height: '60px', width: '60px', bottom: '110px', right: '30px' }"
+  />
 
   <router-view />
 </template>
@@ -12,6 +17,7 @@
 <script lang="ts">
 import { computed, defineComponent } from "vue";
 import { useStore } from "vuex";
+import AsyncLoadingButton from "./components/AsyncLoadingButton.vue";
 import LoadingDialog from "./components/LoadingDialog.vue";
 import ThemeToggleButton from "./components/ThemeToggleButton.vue";
 import { ActionTypes } from "./store/types";
@@ -20,6 +26,7 @@ export default defineComponent({
   components: {
     ThemeToggleButton,
     LoadingDialog,
+    AsyncLoadingButton,
   },
   created() {
     const store = useStore();

@@ -12,7 +12,11 @@ export type AugmentedActionContext = {
 } & Omit<ActionContext<State, State>, "commit">;
 
 export type Actions = {
-  [ActionTypes.GET_THEME]({ commit }: AugmentedActionContext): void;
+  [ActionTypes.GET_THEME]({ commit }: AugmentedActionContext): Promise<void>;
+  [ActionTypes.ASYNC_LOAD](
+    { commit }: AugmentedActionContext,
+    payload: number
+  ): Promise<void>;
 };
 
 export const actions: ActionTree<State, State> & Actions = {
@@ -22,6 +26,13 @@ export const actions: ActionTree<State, State> & Actions = {
       setTimeout(() => res(LocalStorage.get("theme")), 3000);
     });
     commit(MutationTypes.SET_THEME, localTheme);
+    commit(MutationTypes.LOADIND_STOP);
+  },
+  async [ActionTypes.ASYNC_LOAD]({ commit }, payload: number) {
+    commit(MutationTypes.LOADIND_START);
+    await new Promise<AppTheme>((res) => {
+      setTimeout(res, payload);
+    });
     commit(MutationTypes.LOADIND_STOP);
   },
 };

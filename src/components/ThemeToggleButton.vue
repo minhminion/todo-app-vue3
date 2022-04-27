@@ -12,12 +12,11 @@ import { useTheme } from "@/hooks";
 
 export default defineComponent({
   name: "ThemeToggleButton",
-  setup() {
+  setup(_, ctx) {
     const { toggleTheme, currentTheme } = useTheme();
-    console.log(
-      "🚀 Minh =====>  ~ file: ThemeToggleButton.vue ~ line 17 ~ currentTheme",
-      currentTheme
-    );
+
+    console.log(ctx);
+
     return { toggleTheme, currentTheme };
   },
 });
@@ -28,8 +27,8 @@ export default defineComponent({
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   display: block;
   cursor: pointer;

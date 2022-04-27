@@ -5,6 +5,7 @@ export enum AppTheme {
 
 export enum ActionTypes {
   GET_THEME = "GET_THEME",
+  ASYNC_LOAD = "ASYNC_LOADIND",
 }
 
 export enum MutationTypes {
