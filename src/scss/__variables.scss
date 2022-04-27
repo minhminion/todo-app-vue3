@@ -1,0 +1,37 @@
+:root,
+:root.light {
+  --checkbox-shadow: rgba(49, 56, 84, 0.2);
+  --add-button-shadow: rgba(49, 56, 84, 0.4);
+
+  --background-color: #eff3f6;
+  --box-color: #ffffff;
+  --box-shadow: 0 -8px 27px rgba(49, 56, 84, 0.3),
+    0 15px 12px rgba(49, 56, 84, 0.22);
+  --text-color: #313854;
+  --secondary-color: #ffe7c3;
+  --primary-color: rgb(49, 56, 84);
+}
+:root.dark {
+  --checkbox-shadow: rgba(39, 196, 151, 0.2);
+  --add-button-shadow: rgba(39, 196, 151, 0.4);
+
+  --background-color: rgb(8, 8, 8);
+  --box-color: #222423;
+  --box-shadow: 0 -8px 27px rgba(39, 196, 151, 0.3),
+    0 15px 12px rgba(39, 196, 151, 0.22);
+  --text-color: #ffffff;
+  --secondary-color: #ffffff;
+  --primary-color: rgb(39, 196, 151);
+}
+
+body {
+  background-color: var(--background-color);
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  transition-property: color, background-color;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 300ms;
+}
