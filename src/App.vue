@@ -2,7 +2,8 @@
   <loading-dialog v-if="isLoading" />
   <nav>
     <router-link to="/">Todo</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/search">Search</router-link> |
+    <router-link to="/login">Login</router-link>
   </nav>
   <theme-toggle-button
     :style="{ height: '60px', width: '60px', bottom: '30px', right: '30px' }"
@@ -59,6 +60,8 @@ nav {
 
   text-align: center;
   a {
+    font-size: 20px;
+    text-decoration: none;
     font-weight: bold;
     color: #2c3e50;
 
