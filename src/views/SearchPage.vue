@@ -43,6 +43,7 @@ export default {
     min-height: 250px;
     background-color: var(--box-color);
     box-shadow: var(--box-shadow);
+    color: var(--text-color);
     &-loading {
       position: absolute;
       top: 0;

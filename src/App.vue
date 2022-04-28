@@ -3,7 +3,7 @@
   <nav>
     <router-link to="/">Todo</router-link> |
     <router-link to="/search">Search</router-link> |
-    <router-link to="/login">Login</router-link>
+    <router-link to="/drag-and-drop">Drag and Drop</router-link>
   </nav>
   <theme-toggle-button
     :style="{ height: '60px', width: '60px', bottom: '30px', right: '30px' }"
@@ -12,7 +12,11 @@
     :style="{ height: '60px', width: '60px', bottom: '110px', right: '30px' }"
   />
 
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
 </template>
 
 <script lang="ts">
