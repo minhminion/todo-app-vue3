@@ -42,9 +42,9 @@ export default {
 .container-center {
   width: 100%;
   height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
 }
 .todo-container {
   margin: auto;

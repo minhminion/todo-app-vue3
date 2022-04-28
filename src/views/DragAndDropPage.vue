@@ -51,28 +51,32 @@ export default defineComponent({
       { id: 0, title: "Item A", zone: 1 },
       { id: 1, title: "Item B", zone: 1 },
       { id: 2, title: "Item C", zone: 1 },
-      { id: 3, title: "Item D", zone: 2 },
+      { id: 3, title: "Item D", zone: 1 },
     ]);
 
     const getZone = (zone: number) => {
       return items.value.filter((item) => item.zone === zone);
     };
 
-    const startDrag = (event: DragEvent, item: Item) => {
-      if (!event || !event.dataTransfer || !item) return;
+    const startDrag = (event: DragEvent & Event, selectedItem: Item) => {
+      if (!event || !event.dataTransfer || !selectedItem) return;
 
       event.dataTransfer.dropEffect = "move";
       event.dataTransfer.effectAllowed = "move";
-      event.dataTransfer.setData("itemId", String(item.id));
+      event.dataTransfer.setData("itemId", String(selectedItem.id));
     };
 
     const onDrop = (event: DragEvent, zone: number) => {
       if (!event || !event.dataTransfer || !zone) return;
+
       const itemId = event.dataTransfer.getData("itemId");
       const item = items.value.find((item) => item.id === Number(itemId));
 
+      items.value = items.value.filter((item) => item.id !== Number(itemId));
+
       if (item) {
         item.zone = zone;
+        items.value.push(item);
       }
     };
 
@@ -84,8 +88,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .drag-and-drop {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   .drag-zone {
+    margin-left: 15px;
+    margin-right: 15px;
     width: 300px;
     background-color: var(--box-color);
     box-shadow: var(--box-shadow);
