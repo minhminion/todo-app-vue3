@@ -58,7 +58,7 @@ export default defineComponent({
       return items.value.filter((item) => item.zone === zone);
     };
 
-    const startDrag = (event: DragEvent & Event, selectedItem: Item) => {
+    const startDrag = (event: DragEvent, selectedItem: Item) => {
       if (!event || !event.dataTransfer || !selectedItem) return;
 
       event.dataTransfer.dropEffect = "move";

@@ -3,6 +3,8 @@ import TodoPage from "@/views/TodoPage.vue";
 import SearchPage from "@/views/SearchPage.vue";
 import DragAndDropPage from "@/views/DragAndDropPage.vue";
 import TestPage from "@/views/TestPage.vue";
+import LoginPage from "@/views/form/LoginPage.vue";
+import FormPage from "@/views/form/FormPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +21,19 @@ const routes: Array<RouteRecordRaw> = [
     path: "/drag-and-drop",
     name: "drag-and-drop",
     component: DragAndDropPage,
+  },
+  {
+    path: "/form",
+    name: "form",
+    component: FormPage,
+    children: [
+      {
+        path: "",
+        name: "form-1",
+        component: LoginPage,
+        alias: ["1"],
+      },
+    ],
   },
   {
     path: "/test",

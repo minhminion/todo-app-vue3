@@ -24,6 +24,11 @@
   --primary-color: rgb(39, 196, 151);
 }
 
+@mixin box-style {
+  background-color: var(--box-color);
+  box-shadow: var(--box-shadow);
+}
+
 body {
   background-color: var(--background-color);
   padding: 0;
