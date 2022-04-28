@@ -1,16 +1,18 @@
 <template>
-  <div class="dialog-modal">
-    <div class="lds-roller">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <teleport to="#loading-dialog">
+    <div class="dialog-modal">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
+  </teleport>
 </template>
 <script>
 export default {

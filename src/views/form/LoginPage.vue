@@ -25,12 +25,12 @@
 <script lang="ts">
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-import { reactive } from "vue";
+import { defineComponent, reactive } from "vue";
 import BaseInput from "@/components/Form/BaseInput.vue";
 import { useGlobalLoading } from "@/hooks";
 import { fakeApi } from "@/utils";
 
-export default {
+export default defineComponent({
   components: { BaseInput },
   name: "LoginPage",
   setup() {
@@ -46,12 +46,11 @@ export default {
     };
 
     const v = useVuelidate(rules, formValues);
-
     return { v, start, stop };
   },
   methods: {
     async handleSubmit() {
-      const isValid = await this.v.$validate;
+      const isValid = await this.v.$validate();
       if (!isValid) return;
       try {
         this.start();
@@ -66,7 +65,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -13,12 +13,12 @@
     :style="{ height: '60px', width: '60px', bottom: '110px', right: '30px' }"
   />
 
-  <router-view />
-  <!-- <router-view v-slot="{ Component }">
+  <!-- <router-view /> -->
+  <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
       <component :is="Component"></component>
     </transition>
-  </router-view> -->
+  </router-view>
 </template>
 
 <script lang="ts">
