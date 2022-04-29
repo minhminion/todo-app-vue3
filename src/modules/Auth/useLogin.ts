@@ -1,15 +1,10 @@
 import { useGlobalLoading } from "@/hooks";
-import { inject } from "vue";
 import { useRouter } from "vue-router";
-import { AuthorMethods } from "./authorMethods";
 import { UserIdentity } from "./types";
+import useAuth from "./useAuth";
 
 const useLogin = () => {
-  const setAuthState = inject("setAuthState") as (
-    authenticated: boolean,
-    identity?: UserIdentity | null
-  ) => void;
-  const authorMethods: AuthorMethods = inject("authorMethods") as AuthorMethods;
+  const { authorMethods, setAuthState } = useAuth();
 
   const { start, stop } = useGlobalLoading();
   const router = useRouter();

@@ -4,7 +4,7 @@
     <router-link to="/">Todo</router-link> |
     <router-link to="/search">Search</router-link> |
     <router-link to="/drag-and-drop">Drag and Drop</router-link> |
-    <router-link to="/form">Form</router-link> |
+    <router-link to="/form/login">Login</router-link> |
     <router-link to="/private">Private</router-link>
   </nav>
   <theme-toggle-button

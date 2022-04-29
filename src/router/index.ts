@@ -1,12 +1,11 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import TodoPage from "@/views/TodoPage.vue";
-import SearchPage from "@/views/SearchPage.vue";
 import DragAndDropPage from "@/views/DragAndDropPage.vue";
-import TestPage from "@/views/TestPage.vue";
-import LoginPage from "@/views/form/LoginPage.vue";
 import FormPage from "@/views/form/FormPage.vue";
+import LoginPage from "@/views/form/LoginPage.vue";
 import PrivatePage from "@/views/PrivatePage.vue";
-import useLogin from "@/modules/Auth/useLogin";
+import SearchPage from "@/views/SearchPage.vue";
+import TestPage from "@/views/TestPage.vue";
+import TodoPage from "@/views/TodoPage.vue";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,10 +29,10 @@ const routes: Array<RouteRecordRaw> = [
     component: FormPage,
     children: [
       {
-        path: "",
+        path: "login",
         name: "form-1",
         component: LoginPage,
-        alias: ["1"],
+        alias: [""],
       },
     ],
   },

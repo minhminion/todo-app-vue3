@@ -1,4 +1,4 @@
-import { computed, Plugin, reactive, ref, toRefs, watch } from "vue";
+import { Plugin, reactive } from "vue";
 import { AuthorMethods } from "./authorMethods";
 import { AuthState, UserIdentity } from "./types";
 
@@ -25,6 +25,7 @@ const authPlugin: Plugin = {
       authState.identity = identity;
     };
 
+    // Get initial Auth State
     app.provide("authState", authState);
     app.provide("setAuthState", setAuthState);
     app.provide("authorMethods", options.authorMethods);
@@ -39,10 +40,6 @@ const authPlugin: Plugin = {
     } finally {
       authState.isAuthenticating = false;
     }
-
-    console.log("RUN");
-
-    // Get initial Auth State
   },
 };
 

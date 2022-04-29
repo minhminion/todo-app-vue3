@@ -1,19 +1,11 @@
 import { useGlobalLoading } from "@/hooks";
-import { inject } from "vue";
-import { AuthorMethods } from "./authorMethods";
-import { AuthState, UserIdentity } from "./types";
+import { useRouter } from "vue-router";
+import useAuth from "./useAuth";
 
 const useLogout = () => {
-  const setAuthState = inject("setAuthState") as (
-    authenticated: boolean,
-    identity?: UserIdentity | null
-  ) => void;
-  const authorMethods: AuthorMethods = inject("authorMethods") as AuthorMethods;
-  const authState = inject("authState") as AuthState;
-  console.log(
-    "🚀 Minh =====>  ~ file: useLogout.ts ~ line 13 ~ authState",
-    authState
-  );
+  const { authorMethods, setAuthState, authState } = useAuth();
+
+  const router = useRouter();
 
   const { start, stop } = useGlobalLoading();
 
@@ -21,8 +13,8 @@ const useLogout = () => {
     try {
       start();
       await authorMethods.logout();
-
       setAuthState(false, {});
+      router.push("/");
     } finally {
       stop();
     }

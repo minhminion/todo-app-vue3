@@ -1,25 +1,27 @@
 <template>
-  <div class="form">
-    <div class="form-title"><span>Login Page</span></div>
-    <div class="form-content">
-      <form @submit.prevent="handleSubmit">
-        <base-input
-          :label="'Email'"
-          :errors="v.email.$errors"
-          v-model.trim="v.email.$model"
-        />
-        <base-input
-          :label="'Pasword'"
-          type="password"
-          :errors="v.password.$errors"
-          v-model.trim="v.password.$model"
-        />
-        <div>
-          <input type="submit" name="submit" value="Login" />
-        </div>
-      </form>
+  <private-route>
+    <div class="form">
+      <div class="form-title"><span>Login Page</span></div>
+      <div class="form-content">
+        <form @submit.prevent="handleSubmit">
+          <base-input
+            :label="'Email'"
+            :errors="v.email.$errors"
+            v-model.trim="v.email.$model"
+          />
+          <base-input
+            :label="'Pasword'"
+            type="password"
+            :errors="v.password.$errors"
+            v-model.trim="v.password.$model"
+          />
+          <div>
+            <input type="submit" name="submit" value="Login" />
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </private-route>
 </template>
 
 <script lang="ts">
@@ -29,9 +31,10 @@ import { defineComponent, reactive } from "vue";
 import BaseInput from "@/components/Form/BaseInput.vue";
 import { useGlobalLoading } from "@/hooks";
 import useLogin from "@/modules/Auth/useLogin";
+import PrivateRoute from "@/components/PrivateRoute.vue";
 
 export default defineComponent({
-  components: { BaseInput },
+  components: { BaseInput, PrivateRoute },
   name: "LoginPage",
   setup() {
     const { start, stop } = useGlobalLoading();
