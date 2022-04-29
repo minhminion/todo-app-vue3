@@ -28,13 +28,15 @@ import { required, email } from "@vuelidate/validators";
 import { defineComponent, reactive } from "vue";
 import BaseInput from "@/components/Form/BaseInput.vue";
 import { useGlobalLoading } from "@/hooks";
-import { fakeApi } from "@/utils";
+import useLogin from "@/modules/Auth/useLogin";
 
 export default defineComponent({
   components: { BaseInput },
   name: "LoginPage",
   setup() {
     const { start, stop } = useGlobalLoading();
+    const { login } = useLogin();
+
     const formValues = reactive({
       email: "",
       password: "",
@@ -46,23 +48,14 @@ export default defineComponent({
     };
 
     const v = useVuelidate(rules, formValues);
-    return { v, start, stop };
+    return { v, start, stop, login };
   },
   methods: {
     async handleSubmit() {
       const isValid = await this.v.$validate();
       if (!isValid) return;
-      try {
-        this.start();
-        await fakeApi(1000);
-      } catch (error) {
-        console.log(
-          "🚀 Minh =====>  ~ file: LoginPage.vue ~ line 57 ~ error",
-          error
-        );
-      } finally {
-        this.stop();
-      }
+
+      this.login(this.v.email.$model, this.v.password.$model);
     },
   },
 });

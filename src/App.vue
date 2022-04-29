@@ -5,6 +5,7 @@
     <router-link to="/search">Search</router-link> |
     <router-link to="/drag-and-drop">Drag and Drop</router-link> |
     <router-link to="/form">Form</router-link> |
+    <router-link to="/private">Private</router-link>
   </nav>
   <theme-toggle-button
     :style="{ height: '60px', width: '60px', bottom: '30px', right: '30px' }"

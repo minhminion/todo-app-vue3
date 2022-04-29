@@ -18,4 +18,12 @@ export class LocalStorage {
       console.error(`Something went wrong: ${err}`);
     }
   };
+
+  public static remove = (key: string) => {
+    try {
+      localStorage.removeItem(key);
+    } catch (err) {
+      console.error(`Something went wrong: ${err}`);
+    }
+  };
 }

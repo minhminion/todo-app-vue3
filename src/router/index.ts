@@ -5,6 +5,8 @@ import DragAndDropPage from "@/views/DragAndDropPage.vue";
 import TestPage from "@/views/TestPage.vue";
 import LoginPage from "@/views/form/LoginPage.vue";
 import FormPage from "@/views/form/FormPage.vue";
+import PrivatePage from "@/views/PrivatePage.vue";
+import useLogin from "@/modules/Auth/useLogin";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +36,11 @@ const routes: Array<RouteRecordRaw> = [
         alias: ["1"],
       },
     ],
+  },
+  {
+    path: "/private",
+    name: "private",
+    component: PrivatePage,
   },
   {
     path: "/test",
